@@ -2,149 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="assets/css/styles.css">
-
-        <!-- =====BOX ICONS===== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="assets/css/styles.css">
   <title>Education Timeline</title>
   <style>
-
-    /* Body Styling */
-    body {
-     
-      background-image: linear-gradient(to right, #e0f7fa, #ffffff);
+    /* General reset and body setup */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Timeline Container */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white; /* Background color */
+      color: #fff;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: red;
+    }
+
+    /* Timeline container */
     .timeline {
       position: relative;
-      max-width: 900px;
       margin: 0 auto;
-      padding: 10px;
+      padding-left: 30px;
     }
 
-    /* Timeline Line */
-    .timeline::before {
+    .timeline:before {
       content: '';
       position: absolute;
       top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 4px;
-      background-color: #64b5f6;
-      transform: translateX(-50%);
-      animation: line-animation 1s ease-out forwards;
+      left: 18px;
+      width: 2px;
+      height: 100%;
+      background: red;
     }
 
-    /* Line Animation */
-    @keyframes line-animation {
-      from {
-        height: 0;
-      }
-      to {
-        height: 100%;
-      }
-    }
-
-    /* Timeline Event */
+    /* Timeline items (event points) */
     .timeline-item {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 25px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .timeline-item:nth-child(odd) {
-      justify-content: flex-start;
-    }
-
-    /* Individual Event Box */
-    .timeline-content {
-      background-color: #ffffff;
-      padding: 10px;
-      border-radius: 12px;
-      width: 260px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      margin: 40px 0;
       position: relative;
-      transition: transform 0.3s ease-in-out;
-      border-left: 6px solid #64b5f6;
-      background: linear-gradient(135deg, #f0f4f8, #ffffff);
     }
 
-    /* Hover Effect for Timeline Items */
-    .timeline-content:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.15);
+    .timeline-item .date {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #000000;
     }
 
-    .timeline-content::after {
-      content: '';
+    .timeline-item .description {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-top: 10px;
+      color: #000000;
+    }
+
+    /* Circle markers on the timeline */
+    .timeline-item .dot {
+      width: 20px;
+      height: 20px;
+      background-color: orange;
+      border-radius: 50%;
       position: absolute;
-      top: 20px;
-      left: -20px;
-      border-width: 12px;
-      border-style: solid;
-      border-color: transparent #ffffff transparent transparent;
+      left: -10px;
+      top: 0;
+      transition: transform 0.5s ease-in-out;
     }
 
-    .timeline-item:nth-child(odd) .timeline-content::after {
-      left: auto;
-      right: -20px;
-      border-color: transparent transparent transparent #ffffff;
+    /* Animation: Fade in each event */
+    .timeline-item.fade-in {
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: fadeIn 1s forwards;
     }
 
-    /* Title Styling */
-    .timeline-content h3 {
-      font-size: 20px;
-      color: #2196F3;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    /* Event Details Styling */
-    .timeline-content p {
-      color: #333;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    /* Time Period */
-    .timeline-content span {
-      font-size: 14px;
-      color: #888;
-      font-style: italic;
-    }
-
-    /* Timeline Item Animation */
     @keyframes fadeIn {
-      from {
+      0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateX(-50px);
       }
-      to {
+      100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
-    }
-    
-    /* Add spacing between items */
-    .timeline-item + .timeline-item {
-      margin-top: 50px;
     }
 
+    /* Styling for the timeline items' icons */
+    .timeline-item .icon {
+      font-size: 30px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
-
-<body>
-        <!--===== HEADER =====-->
+	<!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Manmaya Rama</a>
+                    <a href="#" class="nav__logo">Karthik K</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
@@ -162,46 +133,47 @@
                 </div>
             </nav>
         </header>
-<main class="l-main"> 
-	<h2 class="section-title">Education</h2>       
-  <div class="timeline">
-    <!-- Timeline Item 1 -->
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h3>Bachelor of Engineering in Computer Science</h3>
-        <p>Vivekananda College Of Engineering & Technology</p>
-        <span>2022 - 2026</span>
-      </div>
-    </div>
 
-    <!-- Timeline Item 2 -->
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h3>Pre-University (Science - PCMC)</h3>
-        <p>Indraprastha Pre-University College</p>
-        <span>2020 - 2022</span>
+  <div class="container">
+    <h1 class="section-title">My Education Timeline</h1>
+    <div class="timeline">
+      <!-- SSLC -->
+      <div class="timeline-item fade-in" style="animation-delay: 0.5s;">
+        <div class="dot"></div>
+        <div class="icon">🎓SSLC</div>
+        <div class="date">2020</div>
+        <div class="description">Shri Bharathi High School,Uruvalu</div>
       </div>
-    </div>
 
-    <!-- Timeline Item 3 -->
-    <div class="timeline-item">
-      <div class="timeline-content">
-        <h3>S.S.L.C</h3>
-        <p>Shri Bharathi High School</p>
-        <span>2020</span>
+      <!-- PUC -->
+      <div class="timeline-item fade-in" style="animation-delay: 1s;">
+        <div class="dot"></div>
+        <div class="icon">🏫Pre-University (Science - PCMC)</div>
+        <div class="date">2022</div>
+        <div class="description">Indraprastha Pre-University College,Uppinangady</div>
+      </div>
+
+      <!-- BE (Expected Graduation) -->
+      <div class="timeline-item fade-in" style="animation-delay: 1.5s;">
+        <div class="dot"></div>
+        <div class="icon">💻BE in Computer Science Engineering</div>
+        <div class="date">2026 (Expected)</div>
+        <div class="description">Vivekananda College of Engineering and Technology,Puttur</div>
       </div>
     </div>
   </div>
-</main>
-
- <footer class="footer">
+  
+  <!--===== FOOTER =====-->
+         <footer class="footer">
             <p class="footer__copy">&copy; 2024 Copyrights.All rights reserved.</p>
         </footer>
+
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+
 </body>
 </html>
